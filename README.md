@@ -1,4 +1,4 @@
-![logo](./_media/logo.512.png)
+![logo](_media/logo.512.png)
 
 > 不一样的注解路由 | 更方便的文档生成
 
