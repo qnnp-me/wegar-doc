@@ -1,5 +1,6 @@
 let num = 0;
 mermaid.initialize({startOnLoad: false});
+window.repo = 'https://github.com/qnnp-me/wegar'
 window.$docsify = {
   logo: '_media/images/logo.512.png',
   name: 'Wegar',
@@ -17,7 +18,7 @@ window.$docsify = {
   },
   notFoundPage: true,
   externalLinkTarget: '_blank',
-  repo: 'https://github.com/qnnp-me/wegar',
+  repo,
   auto2top: true,
   executeScript: true,
   vueGlobalOptions: {
@@ -29,14 +30,32 @@ window.$docsify = {
   },
   vueComponents: {
     'v-last-modified': {
-      template: `<span class="modified"><span class="icon-app-nodate"/> {{ label }} {{ lastModified }}</span>`,
+      template: `
+        <span class="modified">
+        <span class="icon-mode_edit"></span>
+          <a :href="\`\${editUrl}/blob/main\${file}\`" target="_blank" style="color: #ff6600">{{ editText }}</a>
+          &emsp;
+          <span class="icon-app-nodate"></span>
+          {{ label }} {{ lastModified }}
+        </span>
+      `,
       data() {
         return {
           lastModified: window.docLastModified,
           label: ({
             'zh-cn': '本页更新时间：',
             'en': 'This page was last updated:',
-          })[window.location.pathname.split('/')[1] || 'zh-cn']
+          })[window.language],
+          file: window.file,
+          repo: window.repo,
+          editText: ({
+            'zh-cn': '帮助改进/编辑本页',
+            'en': 'Edit on GitHub',
+          })[window.language],
+          editUrl: ({
+            'zh-cn': 'https://github.com/qnnp-me/wegar-doc：',
+            'en': 'https://github.com/qnnp-me/wegar-doc',
+          })[window.language],
         };
       },
     },
@@ -57,7 +76,7 @@ window.$docsify = {
       `,
       data() {
         return {
-          dayjs
+          dayjs,
         }
       }
     }
@@ -67,21 +86,18 @@ window.$docsify = {
       template: `<v-footer/>`,
       data() {
         return {}
-      }
+      },
     }
   },
   plugins: [
     (hook, vm) => {
       // Footer
-      hook.beforeEach((content) => content + "<div class='v-footer'></div>");
+      hook.beforeEach((content) => {
+        window.file = vm.route.file
+        window.language = window.location.pathname.split('/')[1] || 'zh-cn'
+        return content + "<div class='v-footer'></div>";
+      });
     },
-    EditOnGithubPlugin.create('https://github.com/qnnp-me/wegar-doc/tree/main', null, (file) => {
-      if (file.indexOf('en') === -1) {
-        return '编辑文档'
-      } else {
-        return 'Edit on github'
-      }
-    })
   ],
   onlyCover: true,
   autoHeader: true,
