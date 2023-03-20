@@ -74,7 +74,14 @@ window.$docsify = {
     (hook, vm) => {
       // Footer
       hook.beforeEach((content) => content + "<div class='v-footer'></div>");
-    }
+    },
+    EditOnGithubPlugin.create('https://github.com/qnnp-me/wegar-doc', null, (file) => {
+      if (file.indexOf('en') === -1) {
+        return '编辑'
+      } else {
+        return 'Edit on github'
+      }
+    })
   ],
   onlyCover: true,
   autoHeader: true,
