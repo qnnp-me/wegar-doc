@@ -1,5 +1,3 @@
-let num = 0;
-mermaid.initialize({startOnLoad: false});
 window.repo = 'https://github.com/qnnp-me/wegar'
 window.$docsify = {
   logo: '_media/images/logo.512.png',
