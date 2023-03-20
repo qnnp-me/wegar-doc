@@ -110,7 +110,7 @@
    * @see https://github.com/MoOx/pjax/blob/master/lib/is-supported.js
    */
   var supportsPushState =
-    
+
     (function () {
       // Borrowed wholesale from https://github.com/defunkt/jquery-pjax
       return (
