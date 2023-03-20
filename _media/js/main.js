@@ -51,7 +51,7 @@ window.$docsify = {
             'en': 'Edit on GitHub',
           })[window.language],
           editUrl: ({
-            'zh-cn': 'https://github.com/qnnp-me/wegar-doc：',
+            'zh-cn': 'https://github.com/qnnp-me/wegar-doc',
             'en': 'https://github.com/qnnp-me/wegar-doc',
           })[window.language],
         };
