@@ -30,18 +30,17 @@ window.$docsify = {
     'v-last-modified': {
       template: `
         <span class="modified">
-        <span class="icon-mode_edit"></span>
-          <a :href="\`\${editUrl}/blob/main\${file}\`" target="_blank" style="color: #ff6600">{{ editText }}</a>
-          &emsp;
-          <span class="icon-app-nodate"></span>
-          {{ label }} {{ lastModified }}
+          <span class="icon-app-nodate"></span> {{ label }} {{ lastModified }} .
+          <a :href="\`\${editUrl}/blob/main\${file}\`" target="_blank" style="color: #ff6600">
+            <span class="icon-mode_edit"></span> {{ editText }}
+          </a>
         </span>
       `,
       data() {
         return {
           lastModified: window.docLastModified,
           label: ({
-            'zh-cn': '本页更新时间：',
+            'zh-cn': '本页更新时间:',
             'en': 'This page was last updated:',
           })[window.language],
           file: window.file,
