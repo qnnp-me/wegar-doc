@@ -74,7 +74,7 @@ Wegar 自动配置并完成了 webman 的路由注册、中间件加载功能，
 
 ## <span class="icon-tubiao-"></span> 使用 Wegar 插件
 
-### ![](./../_media/images/logo.256.png ':size=18') 安装 Wegar
+### ![](./../_media/img/logo.256.png ':size=18') 安装 Wegar
 
 > 使用 Wegar 之前请确认已经安装/创建了 webman 项目
 

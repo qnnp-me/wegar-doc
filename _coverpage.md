@@ -1,4 +1,4 @@
-![logo](_media/images/logo.512.png ':size=300 :class=logo')
+![logo](_media/img/logo.512.png ':size=300 :class=logo')
 
 > 不一样的注解路由 | 更方便的文档生成
 

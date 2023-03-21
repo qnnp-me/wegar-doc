@@ -1,6 +1,6 @@
 window.repo = 'https://github.com/qnnp-me/wegar'
 window.$docsify = {
-  logo: '_media/images/logo.512.png',
+  logo: '_media/img/logo.512.png',
   name: 'Wegar',
   nameLink: {
     '/zh-cn/': '/zh-cn/',
@@ -62,7 +62,7 @@ window.$docsify = {
         <div class="footer">
           <div class="left">
               <div class="copy-right">
-                  <img src="/_media/images/logo.256.png" alt="Wegar" width="12">
+                  <img src="/_media/img/logo.256.png" alt="Wegar" width="12">
                   &copy; {{ dayjs().format('YYYY') }}
                   <a href="https://qnnp.me" target="_blank">qnnp</a>.
               </div>

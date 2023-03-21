@@ -1,4 +1,4 @@
-![logo](../_media/images/logo.512.png ':size=300')
+![logo](../_media/img/logo.512.png ':size=300')
 
 > Different annotation routing | Easier document generation
 

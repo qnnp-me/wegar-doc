@@ -115,6 +115,7 @@
 }
 .content .footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   font-size: 14px;
   margin: 80px 0 20px;
