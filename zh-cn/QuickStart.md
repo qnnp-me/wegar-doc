@@ -51,7 +51,7 @@ class IndexController
 ## <span class="icon-EC_gerenwengao-chanpinshuoming"></span> 前期准备
 
 ### <span class="icon-php"></span> 安装 PHP
-
+?> 要求 PHP 版本 >= 8.0
 > #### PHP 相关知识请阅读 PHP 官方文档 :
 > - [PHP 是什么？](https://www.php.net/manual/zh/intro-whatis.php)
 > - [PHP 能做什么？](https://www.php.net/manual/zh/intro-whatcando.php)
