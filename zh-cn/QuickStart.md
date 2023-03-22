@@ -171,13 +171,13 @@ class TestApp {}
 
 2. 修改文件： `/config/plugin/qnnp/wegar/route.php` 中的
 
-```txt
+```php
 Wegar::scan(init: true);
 ```
 
 为
 
-```txt
+```php
 Wegar::scan([plugin\TestApp\app\Test::class], init: true);
 ```
 
