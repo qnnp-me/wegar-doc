@@ -159,6 +159,7 @@ class IndexController
 - 控制器目录：/plugin/test-app/app
 
 1. 新建引导文件：/plugin/TestApp/app/TestApp.php
+
 ```php
 <?php # /plugin/test-app/app/TestApp.php
 
