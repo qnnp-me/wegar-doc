@@ -182,5 +182,7 @@ Wegar::scan([plugin\TestApp\app\Test::class], init: true);
 ```php 
 <?php # /plugin/test-app/config/route.php
 
+use qnnp\wegar\Module\Wegar;
+
 Wegar::scan([ plugin\TestApp\app\Test::class ]);
 ```
