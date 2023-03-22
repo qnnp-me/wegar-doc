@@ -5,7 +5,7 @@
 ### <span class="icon-songhuoanzhuang-"></span> 安装
 
 ```bash
-composer require qnnp/wegar
+composer require qnnp/wegar --no-dev
 ```
 
 ### <span class="icon-startup"></span> 使用
