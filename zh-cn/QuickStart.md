@@ -155,10 +155,10 @@ class IndexController
 
 ##### 如 TestApp：
 
-- App路径：/plugin/TestApp
-- 控制器目录：/plugin/TestApp/app
+- App路径： `/plugin/TestApp`
+- 控制器目录：`/plugin/TestApp/app`
 
-1. 新建引导文件：/plugin/TestApp/app/TestApp.php
+1. 新建引导文件： `/plugin/TestApp/app/TestApp.php`
 
 ```php
 <?php # /plugin/TestApp/app/TestApp.php
@@ -169,7 +169,7 @@ class TestApp {}
 
 ```
 
-2. 修改文件：/config/plugin/qnnp/wegar/route.php 中的
+2. 修改文件： `/config/plugin/qnnp/wegar/route.php` 中的
 
 ```txt
 Wegar::scan(init: true);
@@ -181,7 +181,7 @@ Wegar::scan(init: true);
 Wegar::scan([plugin\TestApp\app\Test::class], init: true);
 ```
 
-3. 或者新建文件： /plugin/TestApp/config/route.php
+3. 或者新建文件： `/plugin/TestApp/config/route.php`
 
 ```php 
 <?php # /plugin/TestApp/config/route.php
