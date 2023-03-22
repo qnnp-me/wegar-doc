@@ -153,7 +153,7 @@ class IndexController
 
 #### 在需要加载路由的项目根文件夹新建文件引导文件
 
-##### 如 TestApp：
+**如 TestApp：**
 
 - App路径： `/plugin/TestApp`
 - 控制器目录：`/plugin/TestApp/app`
