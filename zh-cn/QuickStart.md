@@ -148,3 +148,39 @@ class IndexController
     }
 }
 ```
+
+### 加载其他目录 App
+
+#### 在需要加载路由的项目根文件夹新建文件引导文件
+
+##### 如 TestApp：
+
+- App路径：/plugin/test-app
+- 控制器目录：/plugin/test-app/app
+
+1. 新建引导文件：/plugin/TestApp/app/TestApp.php
+```php
+<?php # /plugin/test-app/app/TestApp.php
+
+namespace plugin\TestApp\app;
+
+class TestApp {}
+```
+
+2. 修改文件：/config/plugin/qnnp/wegar/route.php 中的
+
+```
+Wegar::scan(init: true);
+```
+为
+```
+Wegar::scan([plugin\TestApp\app\Test::class], init: true);
+```
+
+3. 或者新建文件： /plugin/test-app/config/route.php
+
+```php 
+<?php # /plugin/test-app/config/route.php
+
+Wegar::scan([ plugin\TestApp\app\Test::class ]);
+```
