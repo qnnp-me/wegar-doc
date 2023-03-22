@@ -149,7 +149,7 @@ class IndexController
 }
 ```
 
-### 加载其他目录 App
+### <span class="icon-songhuoanzhuang-"></span> 加载其他目录 App
 
 #### 在需要加载路由的项目根文件夹新建文件引导文件
 
