@@ -90,6 +90,9 @@
 .app-nav li ul {
   width: max-content;
 }
+.sidebar .search .matching-post .search-keyword {
+  pointer-events: none;
+}
 .sidebar .sidebar-nav a {
   display: flex;
   align-items: center;

@@ -48,6 +48,7 @@
       .replace(/{docsify-ignore}/, '')
       .replace(/<!-- {docsify-ignore-all} -->/, '')
       .replace(/{docsify-ignore-all}/, '')
+      .replace(/<[^>]+>(<\/[^>]+>)?/g, '-')
       .trim();
   }
 
@@ -154,7 +155,8 @@
         }
 
         if (str) {
-          title = removeDocsifyIgnoreTag(str);
+          // title = removeDocsifyIgnoreTag(str).replace(/^-+/,'');
+          title = token.text
         }
 
         index[slug] = { slug: slug, title: title, body: '' };
@@ -189,6 +191,7 @@
         }
       }
     });
+    console.log(index)
     slugify.clear();
     return index;
   }
@@ -240,7 +243,8 @@
           var indexTitle = -1;
           var indexContent = -1;
           handlePostTitle = postTitle
-            ? escapeHtml(ignoreDiacriticalMarks(postTitle))
+            // ? escapeHtml(ignoreDiacriticalMarks(postTitle))
+            ? ignoreDiacriticalMarks(postTitle)
             : postTitle;
           handlePostContent = postContent
             ? escapeHtml(ignoreDiacriticalMarks(postContent))
