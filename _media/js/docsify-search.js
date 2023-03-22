@@ -20,7 +20,7 @@
    * @return {object}  The original string and parsed object, { str, config }.
    */
   function getAndRemoveConfig(str) {
-    if ( str === void 0 ) str = '';
+    if (str === void 0) str = '';
 
     var config = {};
 
@@ -39,7 +39,7 @@
         .trim();
     }
 
-    return { str: str, config: config };
+    return {str: str, config: config};
   }
 
   function removeDocsifyIgnoreTag(str) {
@@ -49,6 +49,7 @@
       .replace(/<!-- {docsify-ignore-all} -->/, '')
       .replace(/{docsify-ignore-all}/, '')
       .replace(/<[^>]+>(<\/[^>]+>)?/g, '-')
+      .replace(/!\[[^\]]*]\([a-z0-9\-_:\/.@ '=]+\) /i, '-')
       .trim();
   }
 
@@ -82,7 +83,9 @@
       "'": '&#39;',
     };
 
-    return String(string).replace(/[&<>"']/g, function (s) { return entityMap[s]; });
+    return String(string).replace(/[&<>"']/g, function (s) {
+      return entityMap[s];
+    });
   }
 
   function getAllPaths(router) {
@@ -132,7 +135,7 @@
   }
 
   function genIndex(path, content, router, depth) {
-    if ( content === void 0 ) content = '';
+    if (content === void 0) content = '';
 
     var tokens = window.marked.lexer(content);
     var slugify = window.Docsify.slugify;
@@ -149,17 +152,17 @@
         var text = removeDocsifyIgnoreTag(token.text);
 
         if (config.id) {
-          slug = router.toURL(path, { id: slugify(config.id) });
+          slug = router.toURL(path, {id: slugify(config.id)});
         } else {
-          slug = router.toURL(path, { id: slugify(escapeHtml(text)) });
+          slug = router.toURL(path, {id: slugify(escapeHtml(text))});
         }
 
         if (str) {
           // title = removeDocsifyIgnoreTag(str).replace(/^-+/,'');
-          title = token.text
+          title = token.text.replace(/!\[[^\]]*]\(([a-z0-9\-_:\/.@]+) ?([a-z0-9\-_:\/.@ '=]+)?\) /i, '<img src="$1" width="14"> ')
         }
 
-        index[slug] = { slug: slug, title: title, body: '' };
+        index[slug] = {slug: slug, title: title, body: ''};
       } else {
         if (tokenIndex === 0) {
           slug = router.toURL(path);
@@ -175,7 +178,7 @@
         }
 
         if (!index[slug]) {
-          index[slug] = { slug: slug, title: '', body: '' };
+          index[slug] = {slug: slug, title: '', body: ''};
         } else if (index[slug].body) {
           token.text = getTableData(token);
           token.text = getListData(token);
@@ -211,7 +214,9 @@
     var matchingResults = [];
     var data = [];
     Object.keys(INDEXS).forEach(function (key) {
-      data = data.concat(Object.keys(INDEXS[key]).map(function (page) { return INDEXS[key][page]; }));
+      data = data.concat(Object.keys(INDEXS[key]).map(function (page) {
+        return INDEXS[key][page];
+      }));
     });
 
     query = query.trim();
@@ -220,7 +225,7 @@
       keywords = [].concat(query, keywords);
     }
 
-    var loop = function ( i ) {
+    var loop = function (i) {
       var post = data[i];
       var matchesScore = 0;
       var resultStr = '';
@@ -272,13 +277,15 @@
             var matchContent =
               handlePostContent &&
               '...' +
-                handlePostContent
-                  .substring(start, end)
-                  .replace(
-                    regEx,
-                    function (word) { return ("<em class=\"search-keyword\">" + word + "</em>"); }
-                  ) +
-                '...';
+              handlePostContent
+                .substring(start, end)
+                .replace(
+                  regEx,
+                  function (word) {
+                    return ("<em class=\"search-keyword\">" + word + "</em>");
+                  }
+                ) +
+              '...';
 
             resultStr += matchContent;
           }
@@ -297,9 +304,11 @@
       }
     };
 
-    for (var i = 0; i < data.length; i++) loop( i );
+    for (var i = 0; i < data.length; i++) loop(i);
 
-    return matchingResults.sort(function (r1, r2) { return r2.score - r1.score; });
+    return matchingResults.sort(function (r1, r2) {
+      return r2.score - r1.score;
+    });
   }
 
   function init(config, vm) {
@@ -315,7 +324,9 @@
       if (Array.isArray(config.pathNamespaces)) {
         namespaceSuffix =
           config.pathNamespaces.filter(
-            function (prefix) { return path.slice(0, prefix.length) === prefix; }
+            function (prefix) {
+              return path.slice(0, prefix.length) === prefix;
+            }
           )[0] || namespaceSuffix;
       } else if (config.pathNamespaces instanceof RegExp) {
         var matches = path.match(config.pathNamespaces);
@@ -375,7 +386,7 @@
   }
 
   function tpl(defaultValue) {
-    if ( defaultValue === void 0 ) defaultValue = '';
+    if (defaultValue === void 0) defaultValue = '';
 
     var html = "<div class=\"input-wrap\">\n      <input type=\"search\" value=\"" + defaultValue + "\" aria-label=\"Search text\" />\n      <div class=\"clear-button\">\n        <svg width=\"26\" height=\"24\">\n          <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#ccc\" />\n          <path stroke=\"white\" stroke-width=\"2\" d=\"M8.25,8.25,15.75,15.75\" />\n          <path stroke=\"white\" stroke-width=\"2\"d=\"M8.25,15.75,15.75,8.25\" />\n        </svg>\n      </div>\n    </div>\n    <div class=\"results-panel\"></div>\n    </div>";
     var el = Docsify.dom.create('div', html);
@@ -429,21 +440,25 @@
     var timeId;
 
     /**
-      Prevent to Fold sidebar.
+     Prevent to Fold sidebar.
 
-      When searching on the mobile end,
-      the sidebar is collapsed when you click the INPUT box,
-      making it impossible to search.
+     When searching on the mobile end,
+     the sidebar is collapsed when you click the INPUT box,
+     making it impossible to search.
      */
     Docsify.dom.on(
       $search,
       'click',
-      function (e) { return ['A', 'H2', 'P', 'EM'].indexOf(e.target.tagName) === -1 &&
-        e.stopPropagation(); }
+      function (e) {
+        return ['A', 'H2', 'P', 'EM'].indexOf(e.target.tagName) === -1 &&
+          e.stopPropagation();
+      }
     );
     Docsify.dom.on($input, 'input', function (e) {
       clearTimeout(timeId);
-      timeId = setTimeout(function (_) { return doSearch(e.target.value.trim()); }, 100);
+      timeId = setTimeout(function (_) {
+        return doSearch(e.target.value.trim());
+      }, 100);
     });
     Docsify.dom.on($inputWrap, 'click', function (e) {
       // Click input outside
@@ -464,7 +479,9 @@
     if (typeof text === 'string') {
       $input.placeholder = text;
     } else {
-      var match = Object.keys(text).filter(function (key) { return path.indexOf(key) > -1; })[0];
+      var match = Object.keys(text).filter(function (key) {
+        return path.indexOf(key) > -1;
+      })[0];
       $input.placeholder = text[match];
     }
   }
@@ -473,7 +490,9 @@
     if (typeof text === 'string') {
       NO_DATA_TEXT = text;
     } else {
-      var match = Object.keys(text).filter(function (key) { return path.indexOf(key) > -1; })[0];
+      var match = Object.keys(text).filter(function (key) {
+        return path.indexOf(key) > -1;
+      })[0];
       NO_DATA_TEXT = text[match];
     }
   }
@@ -489,7 +508,9 @@
     style();
     tpl(keywords);
     bindEvents();
-    keywords && setTimeout(function (_) { return doSearch(keywords); }, 500);
+    keywords && setTimeout(function (_) {
+      return doSearch(keywords);
+    }, 500);
   }
 
   function update(opts, vm) {
