@@ -198,7 +198,6 @@
 
       }
     });
-    console.log(index)
     slugify.clear();
     return index;
   }
