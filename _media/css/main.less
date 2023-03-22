@@ -112,13 +112,22 @@
 }
 
 .sidebar {
-  .search{
-    .matching-post{
-      .search-keyword{
+  .search {
+    .matching-post {
+      .search-keyword {
         pointer-events: none;
       }
     }
+
+    .clear-button {
+      &.show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
+
   .sidebar-nav {
     a {
       display: flex;

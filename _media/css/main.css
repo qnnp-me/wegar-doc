@@ -93,6 +93,11 @@
 .sidebar .search .matching-post .search-keyword {
   pointer-events: none;
 }
+.sidebar .search .clear-button.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .sidebar .sidebar-nav a {
   display: flex;
   align-items: center;

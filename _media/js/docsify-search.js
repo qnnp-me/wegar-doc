@@ -192,6 +192,10 @@
             ? index[slug].body + token.text
             : token.text;
         }
+        index[slug].body = index[slug].body
+          .replace(/<[^>]+>(<\/[^>]+>)?/g, '')
+          .replace(/!\[[^\]]*]\([a-z0-9\-_:\/.@ '=]+\) /i, '')
+
       }
     });
     console.log(index)
