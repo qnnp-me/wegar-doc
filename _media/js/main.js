@@ -11,7 +11,7 @@ window.$docsify = {
   themeColor: '#4180c7',
   topMargin: 30,
   formatUpdated(time) {
-    window.docLastModified = dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+    window.docLastModified = dayjs(time).format('YYYY-MM-DD HH:mm')
     return window.docLastModified
   },
   notFoundPage: true,
@@ -28,14 +28,6 @@ window.$docsify = {
   },
   vueComponents: {
     'v-last-modified': {
-      template: `
-        <span class="modified">
-          <span class="icon-app-nodate"></span> {{ label }} {{ lastModified }} .
-          <a :href="\`\${editUrl}/blob/main\${file}\`" target="_blank" style="color: #ff6600">
-            <span class="icon-mode_edit"></span> {{ editText }}
-          </a>
-        </span>
-      `,
       data() {
         return {
           lastModified: window.docLastModified,
@@ -55,8 +47,21 @@ window.$docsify = {
           })[window.language],
         };
       },
+      template: `
+        <span class="modified">
+          <span class="icon-app-nodate"></span> {{ label }} {{ lastModified }}.
+          <a :href="\`\${editUrl}/blob/main\${file}\`" target="_blank" style="color: #ff6600">
+            <span class="icon-mode_edit"></span> {{ editText }}
+          </a>
+        </span>
+      `,
     },
     'v-footer': {
+      data() {
+        return {
+          dayjs,
+        }
+      },
       template: `
         <div class="footer">
           <div class="left">
@@ -70,12 +75,7 @@ window.$docsify = {
               <v-last-modified/>
           </div>
         </div>
-      `,
-      data() {
-        return {
-          dayjs,
-        }
-      }
+      `
     }
   },
   vueMounts: {

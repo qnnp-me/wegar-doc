@@ -12,4 +12,4 @@
 > OpenAPI规范 (OAS) 为HTTP api定义了标准的，与编程语言无关的接口描述，该描述允许人类和计算机发现和理解服务的功能，而无需访问源代码，其他文档或检查网络流量。当通过OpenAPI正确定义时，消费者可以用最少的实现逻辑来理解远程服务并与之交互。与接口描述为低级编程所做的类似，OpenAPI规范消除了调用服务时的猜测。
 > > The OpenAPI Specification (OAS) defines a standard, programming language-agnostic interface description for HTTP APIs, which allows both humans and computers to discover and understand the capabilities of a service without requiring access to source code, additional documentation, or inspection of network traffic. When properly defined via OpenAPI, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. Similar to what interface descriptions have done for lower-level programming, the OpenAPI Specification removes guesswork in calling a service.
 
-### <span class="icon-link"></span> [OpenAPI 规范](https://spec.openapis.org/oas/latest.html)
+### [<span class="icon-link"></span> OpenAPI 规范](https://spec.openapis.org/oas/latest.html)
