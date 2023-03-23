@@ -1,5 +1,7 @@
 # <span class="icon-startup-rocket"></span> 快速开始
 
+?> 要求 **PHP** 版本 **>= 8.0**，已创建的 **webman** 项目
+
 ## <span class="icon-yunhang"></span> 基本使用
 
 ### <span class="icon-songhuoanzhuang-"></span> 安装
@@ -46,12 +48,12 @@ class IndexController
 }
 ```
 
-!> **请注意！** 安装 Wegar 之后为安全起见将会默认关闭 webman 的默认路由加载方式！如需开启请修改文件 config/plugin/qnnp/wegar/route.php 并评估安全问题！
+!> **请注意！** 安装 Wegar 之后为安全起见将会**默认关闭 webman 的默认路由加载方式！**如需开启请修改文件 `config/plugin/qnnp/wegar/route.php` 并**评估安全影响！**
 
 ## <span class="icon-EC_gerenwengao-chanpinshuoming"></span> 前期准备
 
 ### <span class="icon-php"></span> 安装 PHP
-?> 要求 PHP 版本 >= 8.0
+
 > #### PHP 相关知识请阅读 PHP 官方文档 :
 > - [PHP 是什么？](https://www.php.net/manual/zh/intro-whatis.php)
 > - [PHP 能做什么？](https://www.php.net/manual/zh/intro-whatcando.php)
